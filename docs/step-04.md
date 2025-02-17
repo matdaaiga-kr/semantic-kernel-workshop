@@ -652,7 +652,7 @@ Semantic Kernel을 활용한 챗봇 호출 결과를 [.NET Aspire 대시보드](
     ```csharp
     var builder = Kernel.CreateBuilder();
     
-    // 👇 아래 내용을 삭제합니다. 
+    // 👇👇👇 아래 내용을 삭제합니다. 
     if (string.IsNullOrWhiteSpace(config["Azure:OpenAI:Endpoint"]!) == false)
     {
         var client = new AzureOpenAIClient(
@@ -676,23 +676,23 @@ Semantic Kernel을 활용한 챗봇 호출 결과를 [.NET Aspire 대시보드](
             openAIClient: client
         );
     }
-    // 👆 위 내용을 삭제합니다.
+    // 👆👆👆 위 내용을 삭제합니다.
 
-    // 👇 아래 내용을 추가합니다. 
+    // 👇👇👇 아래 내용을 추가합니다. 
     builder.AddGoogleAIGeminiChatCompletion(
             modelId: config["Google:Gemini:ModelIds:ChatCompletion"]!,
             apiKey: config["Google:Gemini:ApiKey"]!
         );
-    // 👆 위 내용을 추가합니다. 
+    // 👆👆👆 위 내용을 추가합니다. 
     ```
 1. `Workshop.ConsoleApp/Services/TextSearchService.cs`의 `using Microsoft.SemanticKernel.Data;` 부분을 찾아 아래와 같이 수정합니다.
 
     ```csharp
     using Microsoft.SemanticKernel.Data;
     using Microsoft.SemanticKernel.Embeddings;
-    // 👇 아래 내용을 추가합니다. 
+    // 👇👇👇 아래 내용을 추가합니다. 
     using Microsoft.SemanticKernel.Connectors.Google;
-    // 👆 위 내용을 추가합니다. 
+    // 👆👆👆 위 내용을 추가합니다. 
     ```
 
 1. `Workshop.ConsoleApp/Services/TextSearchService.cs`의 `var embeddingsService = default(ITextEmbeddingGenerationService);` 부분을 찾아 아래와 같이 수정합니다.
@@ -700,7 +700,7 @@ Semantic Kernel을 활용한 챗봇 호출 결과를 [.NET Aspire 대시보드](
     ```csharp
     var embeddingsService = default(ITextEmbeddingGenerationService);
 
-    // 👇 아래 내용을 삭제합니다. 
+    // 👇👇👇 아래 내용을 삭제합니다. 
     if (string.IsNullOrWhiteSpace(config["Azure:OpenAI:Endpoint"]!) == false)
     {
         var embeddingsClient = new AzureOpenAIClient(
@@ -726,14 +726,14 @@ Semantic Kernel을 활용한 챗봇 호출 결과를 [.NET Aspire 대시보드](
             openAIClient: embeddingsClient
         );
     }
-    // 👆 위 내용을 삭제합니다. 
+    // 👆👆👆 위 내용을 삭제합니다. 
 
-    // 👇 아래 내용을 추가합니다. 
+    // 👇👇👇 아래 내용을 추가합니다. 
     embeddingsService = new GoogleAITextEmbeddingGenerationService(
         modelId: config["Google:Gemini:ModelIds:Embeddings"]!,
         apiKey: config["Google:Gemini:ApiKey"]!
     );
-    // 👆 위 내용을 추가합니다. 
+    // 👆👆👆 위 내용을 추가합니다. 
     ```
 1. `workshop/Workshop.ConsoleApp/appsettings.json`파일의 `"Azure":` 부분을 찾아 아래와 같이 수정합니다.
 
@@ -746,7 +746,7 @@ Semantic Kernel을 활용한 챗봇 호출 결과를 [.NET Aspire 대시보드](
         }
       }
     },
-    // 👇 아래 내용을 추가합니다. 
+    // 👇👇👇 아래 내용을 추가합니다. 
     "Google": {
       "Gemini": {
         "ModelIds":{
@@ -755,7 +755,7 @@ Semantic Kernel을 활용한 챗봇 호출 결과를 [.NET Aspire 대시보드](
         }
       }
     },
-    // 👆 위 내용을 추가합니다. 
+    // 👆👆👆 위 내용을 추가합니다. 
     ```
 1. 파일을 저장한 후 콘솔 앱을 실행시킵니다.
 
