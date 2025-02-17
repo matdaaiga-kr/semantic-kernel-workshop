@@ -239,6 +239,120 @@ Semantic Kernel에 In-Memory 벡터 데이터베이스를 연결합니다.
         }
     }
     ```
+1. 만약 GitHub Models의 토큰을 모두 사용했다면 콘솔 앱 프로젝트에 Google 커넥터를 추가합니다.
+
+    ```bash
+    dotnet add ./Workshop.ConsoleApp package Microsoft.SemanticKernel.Connectors.Google --prerelease
+    ```
+
+1. 이전 [STEP 00: 개발 환경 설정하기](./step-00.md)에서 생성한 API 액세스 토큰을 콘솔 앱에 등록합니다.
+
+    ```bash
+    dotnet user-secrets --project ./Workshop.ConsoleApp/ set Google:Gemini:ApiKey {{Google Gemini API Key}}
+    ```
+
+
+1. `Workshop.ConsoleApp/Program.cs`를 아래와 같이 수정합니다.
+
+    ```csharp
+    // 👇 아래 내용을 추가합니다. 
+    using Microsoft.SemanticKernel.Connectors.Google;
+    // 👆 위 내용을 추가합니다. 
+    ...
+
+    // 👇 아래 내용을 삭제합니다. 
+    var builder = Kernel.CreateBuilder();
+    // 👆 위 내용을 삭제합니다. 
+
+    // 👇 아래 내용을 추가합니다. 
+    var builder = Kernel.CreateBuilder()
+        .AddGoogleAIGeminiChatCompletion(
+            modelId: config["Google:Gemini:ModelIds:ChatCompletion"]!,
+            apiKey: config["Google:Gemini:ApiKey"]!,
+            serviceId: "google"
+        );
+    // 👆 위 내용을 추가합니다. 
+
+    // 👇 아래 내용을 삭제합니다. 
+    if (string.IsNullOrWhiteSpace(config["Azure:OpenAI:Endpoint"]!) == false)
+    {
+        var client = new AzureOpenAIClient(
+            new Uri(config["Azure:OpenAI:Endpoint"]!),
+            new AzureKeyCredential(config["Azure:OpenAI:ApiKey"]!));
+
+        builder.AddAzureOpenAIChatCompletion(
+            deploymentName: config["Azure:OpenAI:DeploymentNames:ChatCompletion"]!,
+            azureOpenAIClient: client
+        );
+    }
+    else
+    {
+        var client = new OpenAIClient(
+            credential: new ApiKeyCredential(config["GitHub:Models:AccessToken"]!),
+            options: new OpenAIClientOptions { Endpoint = new Uri(config["GitHub:Models:Endpoint"]!) }
+        );
+
+        builder.AddOpenAIChatCompletion(
+            modelId: config["GitHub:Models:ModelIds:ChatCompletion"]!,
+            openAIClient: client
+        );
+    }
+    // 👆 위 내용을 삭제합니다.
+    ```
+1. `Workshop.ConsoleApp/Services/TextSearchService.cs`를 아래와 같이 수정합니다.
+
+    ```csharp
+    // 👇 아래 내용을 추가합니다. 
+    using Microsoft.SemanticKernel.Connectors.Google;
+    // 👆 위 내용을 추가합니다. 
+    ...
+    // 👇 아래 내용을 삭제합니다. 
+    if (string.IsNullOrWhiteSpace(config["Azure:OpenAI:Endpoint"]!) == false)
+    {
+        var embeddingsClient = new AzureOpenAIClient(
+            new Uri(config["Azure:OpenAI:Endpoint"]!),
+            new AzureKeyCredential(config["Azure:OpenAI:ApiKey"]!)
+        );
+
+
+        embeddingsService = new AzureOpenAITextEmbeddingGenerationService(
+            deploymentName: config["Azure:OpenAI:DeploymentNames:Embeddings"]!,
+            azureOpenAIClient: embeddingsClient
+        );
+    }
+    else
+    {
+        var embeddingsClient = new OpenAIClient(
+            new ApiKeyCredential(config["GitHub:Models:AccessToken"]!),
+            new OpenAIClientOptions { Endpoint = new Uri(config["GitHub:Models:Endpoint"]!) }
+        );
+
+        embeddingsService = new OpenAITextEmbeddingGenerationService(
+            modelId: config["GitHub:Models:ModelIds:Embeddings"]!,
+            openAIClient: embeddingsClient
+        );
+    }
+    // 👆 위 내용을 삭제합니다. 
+
+    // 👇 아래 내용을 추가합니다. 
+    embeddingsService = new GoogleAITextEmbeddingGenerationService(
+        modelId: config["Google:Gemini:ModelIds:Embeddings"]!,
+        apiKey: config["Google:Gemini:ApiKey"]!
+    );
+    // 👆 위 내용을 추가합니다. 
+    ```
+1. `workshop/Workshop.ConsoleApp/appsettings.json`파일을 아래와 같이 수정합니다.
+
+    ```JSON
+    "Google": {
+      "Gemini": {
+        "ModelIds":{
+          "ChatCompletion": "gemini-1.5-pro",
+          "Embeddings": "text-embedding-004"
+        }
+      }
+    },
+    ```
 
 ## 벡터 스토어에 저장된 데이터를 직접 검색하기
 
