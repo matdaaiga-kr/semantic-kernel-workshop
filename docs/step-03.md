@@ -779,7 +779,7 @@ Workshop
 	      "Endpoint": "https://models.inference.ai.azure.com"
 	    }
 	  },
-  // 👇👇👇 아래 코드를 추가하세요 (이 주석은 삭제하세요)
+	// 👇👇👇 아래 코드를 추가하세요 (이 주석은 삭제하세요)
 	  "Google": {
 	    "Gemini": {
 	      "ModelName": "gemini-1.5-pro"
