@@ -263,7 +263,7 @@ Workshop
 1. `Assistant: ` 프롬프트에 응답이 표시되는 것을 확인합니다.
 1. 다시 `User: ` 프롬프트가 보이면 다른 주제를 입력해 보거나 아무것도 입력하지 않고 엔터키를 눌러 콘솔 앱을 종료합니다.
 
-1. 혹시 GitHub Models에서 토큰 사용량 초과 관련 에러가 나오면 아래 섹션 [Trouble Shooting : GitHub Models를 Google Gemini로 대체하기](#troubleshooting--github-models를-google-gemini로-대체하기)를 참고해서 Google Gemini로 바꾼 후에 다시 실행해 보세요.
+1. 혹시 GitHub Models에서 토큰 사용량 초과 관련 에러가 나오면 아래 섹션 [TroubleShooting : GitHub Models를 Google Gemini로 대체하기](#troubleshooting--github-models를-google-gemini로-대체하기)를 참고해서 Google Gemini로 바꾼 후에 다시 실행해 보세요.
 
 ## 단일 에이전트 만들기 &ndash; 네이티브 플러그인
 
@@ -476,7 +476,7 @@ Workshop
 1. `Assistant: ` 프롬프트에 응답이 표시되는 것을 확인합니다.
 1. 다시 `User: ` 프롬프트가 보이면 아무것도 입력하지 않고 엔터키를 눌러 콘솔 앱을 종료합니다.
 
-1. 혹시 GitHub Models에서 토큰 사용량 초과 관련 에러가 나오면 아래 섹션 [Trouble Shooting : GitHub Models를 Google Gemini로 대체하기](#troubleshooting--github-models를-google-gemini로-대체하기)를 참고해서 Google Gemini로 바꾼 후에 다시 실행해 보세요.
+1. 혹시 GitHub Models에서 토큰 사용량 초과 관련 에러가 나오면 아래 섹션 [TroubleShooting : GitHub Models를 Google Gemini로 대체하기](#troubleshooting--github-models를-google-gemini로-대체하기)를 참고해서 Google Gemini로 바꾼 후에 다시 실행해 보세요.
 
 ## 다중 에이전트 협업하기
 
@@ -740,12 +740,11 @@ Workshop
 1. `ProjectManager: `, `Copywriter: ` 프롬프트가 서로 대화를 하면서 결과를 도출해 내는 것을 확인합니다.
 1. 다시 `User: ` 프롬프트가 보이면 아무것도 입력하지 않고 엔터키를 눌러 콘솔 앱을 종료합니다.
 
-1. 혹시 GitHub Models에서 토큰 사용량 초과 관련 에러가 나오면 아래 섹션 [Trouble Shooting : GitHub Models를 Google Gemini로 대체하기](#troubleshooting--github-models를-google-gemini로-대체하기)를 참고해서 Google Gemini로 바꾼 후에 다시 실행해 보세요.
+1. 혹시 GitHub Models에서 토큰 사용량 초과 관련 에러가 나오면 아래 섹션 [TroubleShooting : GitHub Models를 Google Gemini로 대체하기](#troubleshooting--github-models를-google-gemini로-대체하기)를 참고해서 Google Gemini로 바꾼 후에 다시 실행해 보세요.
 
 ## Troubleshooting : GitHub Models를 Google Gemini로 대체하기
 
-만약 GitHub Models의 토큰을 모두 사용했다면 화면에 에러가 나타납니다. 
-이 경우, GitHub Models 대신 앞서 [STEP 01: Semantic Kernel 기본 작동법](./step-01.md)에서 사용했었던 Google Gemini를 사용합니다.
+만약 GitHub Models의 토큰을 모두 사용했다면 화면에 토큰 사용량 초과 관련 에러가 나타납니다. 이 경우, GitHub Models 대신 앞서 [STEP 01: Semantic Kernel 기본 작동법](./step-01.md)에서 사용했었던 Google Gemini를 사용합니다.
 
 1. 먼저 워크샵 디렉토리에 있는지 다시 한 번 확인합니다.
 
@@ -765,68 +764,77 @@ Workshop
     dotnet user-secrets --project ./Workshop.ConsoleApp/ set Google:Gemini:ApiKey {{Google Gemini API Key}}
     ```
 
-1. `Workshop.ConsoleApp/appsettings.json` 파일을 열고 `"GitHub": {"Models": {"ModelId": "gpt-4o","Endpoint": "https://models.inference.ai.azure.com"}},` 라인을 찾아 아래 코드를 입력합니다.
+1. `Workshop.ConsoleApp/appsettings.json` 파일을 열고 `"GitHub": {` 라인을 찾아 아래 코드를 입력합니다.
 
-    ```json
-    {
-        "Azure": {
-            "OpenAI": {
-                "DeploymentName": "gpt-4o"
-            }
-        },
-        "GitHub": {
-            "Models": {
-                "ModelId": "gpt-4o",
-                "Endpoint": "https://models.inference.ai.azure.com"
-            }
-        },
-        // 👇👇👇 아래 코드를 입력하세요
-        "Google": {
-            "Gemini": {
-                "ModelName": "gemini-1.5-pro"
-            }
-        }
-        // 👆👆👆 위 코드를 입력하세요
-    }
-    ```
+	```jsonc
+	{
+	  "Azure": {
+	    "OpenAI": {
+	      "DeploymentName": "gpt-4o"
+	    }
+	  },
+	  "GitHub": {
+	    "Models": {
+	      "ModelId": "gpt-4o",
+	      "Endpoint": "https://models.inference.ai.azure.com"
+	    }
+	  },
+ 		// 👇👇👇 아래 코드를 추가하세요 (이 주석은 삭제하세요)
+	  "Google": {
+	    "Gemini": {
+	      "ModelName": "gemini-1.5-pro"
+	    }
+	  }
+ 		// 👆👆👆 위 코드를 추가하세요 (이 주석은 삭제하세요)
+	}
+	```
 
 1. `Workshop.ConsoleApp/Program.cs` 파일을 열고 `var kernel = builder.Build();` 라인을 찾아 아래 코드를 입력합니다.
 
     ```csharp
-        // 👇👇👇 아래 코드를 삭제하세요
-        if (string.IsNullOrWhiteSpace(config["Azure:OpenAI:Endpoint"]!) == false)
-        {
-            var client = new AzureOpenAIClient(
-                new Uri(config["Azure:OpenAI:Endpoint"]!),
-                new AzureKeyCredential(config["Azure:OpenAI:ApiKey"]!));
+    // 👇👇👇 아래 코드를 삭제하세요
+    if (string.IsNullOrWhiteSpace(config["Azure:OpenAI:Endpoint"]!) == false)
+    {
+        var client = new AzureOpenAIClient(
+            new Uri(config["Azure:OpenAI:Endpoint"]!),
+            new AzureKeyCredential(config["Azure:OpenAI:ApiKey"]!));
+        builder.AddAzureOpenAIChatCompletion(
+                    deploymentName: confi["Azure:OpenAI:DeploymentName"]!,
+                     azureOpenAIClient: client);
+    }
+    else
+    {
+        var client = new OpenAIClient(
+            credential: new ApiKeyCredential(confi["GitHub:Models:AccessToken"]!),
+            options: new OpenAIClientOptions { Endpoint = new Ur(config["GitHub:Models:Endpoint"]!) });
+        builder.AddOpenAIChatCompletion(
+                    modelId: config["GitHub:Models:ModelId"]!,
+                    openAIClient: client);
+    }
+    // 👆👆👆 위 코드를 삭제하세요
 
-            builder.AddAzureOpenAIChatCompletion(
-                        deploymentName: config["Azure:OpenAI:DeploymentName"]!,
-                        azureOpenAIClient: client);
-        }
-        else
-        {
-            var client = new OpenAIClient(
-                credential: new ApiKeyCredential(config["GitHub:Models:AccessToken"]!),
-                options: new OpenAIClientOptions { Endpoint = new Uri(config["GitHub:Models:Endpoint"]!) });
+    // 👇👇👇 아래 코드를 추가하세요
+    builder.AddGoogleAIGeminiChatCompletion(
+                modelId: config["Google:Gemini:ModelName"]!,
+                apiKey: config["Google:Gemini:ApiKey"]!,
+                serviceId: "google");
+    // 👆👆👆 위 코드를 추가하세요
 
-            builder.AddOpenAIChatCompletion(
-                        modelId: config["GitHub:Models:ModelId"]!,
-                        openAIClient: client);
-
-        }
-        // 👆👆👆 위 코드를 삭제하세요
-
-        // 👇👇👇 아래 코드를 추가하세요
-        builder.AddGoogleAIGeminiChatCompletion(
-                    modelId: config["Google:Gemini:ModelName"]!,
-                    apiKey: config["Google:Gemini:ApiKey"]!,
-                    serviceId: "google");
-        // 👆👆👆 위 코드를 추가하세요
-
-        var kernel = builder.Build();
+    var kernel = builder.Build();
     ```
 
+1. 파일을 저장한 후 콘솔 앱을 실행시킵니다.
+
+    ```bash
+    dotnet run --project ./Workshop.ConsoleApp
+    ```
+
+1. User: 라는 프롬프트가 보이면 앞서 입력했던 프롬프트를 다시 입력합니다.
+
+1. Assistant: 앞서 입력한 프롬프트의 결과대로 응답이 표시되는지 확인합니다.
+
+1. 다시 User: 프롬프트가 보이면 아무것도 입력하지 않고 엔터키를 눌러 콘솔 앱을 종료합니다.
+   
 ## 완성본 결과 확인
 
 이 세션의 완성본은 `$REPOSITORY_ROOT/save-points/step-03/complete`에서 확인할 수 있습니다.
