@@ -766,28 +766,28 @@ Workshop
 
 1. `Workshop.ConsoleApp/appsettings.json` 파일을 열고 `"GitHub": {` 라인을 찾아 아래 코드를 입력합니다.
 
-	```jsonc
-	{
-	  "Azure": {
-	    "OpenAI": {
-	      "DeploymentName": "gpt-4o"
-	    }
-	  },
-	  "GitHub": {
-	    "Models": {
-	      "ModelId": "gpt-4o",
-	      "Endpoint": "https://models.inference.ai.azure.com"
-	    }
-	  },
-	  // 👇👇👇 아래 코드를 추가하세요 (이 주석은 삭제하세요)
-	  "Google": {
-	    "Gemini": {
-	      "ModelName": "gemini-1.5-pro"
-	    }
-	  }
- 	  // 👆👆👆 위 코드를 추가하세요 (이 주석은 삭제하세요)
-	}
-	```
+    ```jsonc
+    {
+      "Azure": {
+        "OpenAI": {
+          "DeploymentName": "gpt-4o"
+        }
+      },
+      "GitHub": {
+        "Models": {
+          "ModelId": "gpt-4o",
+          "Endpoint": "https://models.inference.ai.azure.com"
+        }
+      },
+      // 👇👇👇 아래 코드를 추가하세요 (이 주석은 삭제하세요)
+      "Google": {
+        "Gemini": {
+          "ModelName": "gemini-1.5-pro"
+        }
+      }
+      // 👆👆👆 위 코드를 추가하세요 (이 주석은 삭제하세요)
+    }
+    ```
 
 1. `Workshop.ConsoleApp/Program.cs` 파일을 열고 `var kernel = builder.Build();` 라인을 찾아 아래 코드를 입력합니다.
 
