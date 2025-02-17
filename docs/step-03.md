@@ -745,7 +745,7 @@ Workshop
 ## Troubleshooting : GitHub Models를 Google Gemini로 대체하기
 
 만약 GitHub Models의 토큰을 모두 사용했다면 화면에 에러가 나타납니다. 
-이 경우, GitHub Models 대신 앞서 [STEP 01: Semantic Kernel](./step-01.md) 기본 작동법에서 사용했던 Google Gemini를 사용합니다.
+이 경우, GitHub Models 대신 앞서 [STEP 01: Semantic Kernel 기본 작동법](./step-01.md)에서 사용했었던 Google Gemini를 사용합니다.
 
 1. 먼저 워크샵 디렉토리에 있는지 다시 한 번 확인합니다.
 
@@ -816,7 +816,7 @@ Workshop
 
         }
         // 👆👆👆 위 코드를 삭제하세요
-        
+
         // 👇👇👇 아래 코드를 추가하세요
         builder.AddGoogleAIGeminiChatCompletion(
                     modelId: config["Google:Gemini:ModelName"]!,
