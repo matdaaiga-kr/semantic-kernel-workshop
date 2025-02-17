@@ -816,8 +816,7 @@ Workshop
     // 👇👇👇 아래 코드를 추가하세요
     builder.AddGoogleAIGeminiChatCompletion(
                 modelId: config["Google:Gemini:ModelName"]!,
-                apiKey: config["Google:Gemini:ApiKey"]!,
-                serviceId: "google");
+                apiKey: config["Google:Gemini:ApiKey"]!);
     // 👆👆👆 위 코드를 추가하세요
 
     var kernel = builder.Build();
