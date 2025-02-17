@@ -627,7 +627,7 @@ Semantic Kernel을 활용한 챗봇 호출 결과를 [.NET Aspire 대시보드](
 
 ## GitHub Models를 Google Gemini로 대체하기
 
-만약 GitHub Models의 토큰을 모두 사용했다면 질문에 대한 응답이 출력되지 않습니다. 이 경우, GitHub Models 대신 앞서 [STEP 01: Semantic Kernel](./step-01.md) 기본 작동법에서 사용했던 Google Gemini를 사용합니다.
+만약 GitHub Models의 토큰을 모두 사용했다면 질문에 대한 응답이 출력되지 않습니다. 이 경우, GitHub Models 대신 앞서 [STEP 01: Semantic Kernel 기본 작동법](./step-01.md) 기본 작동법에서 사용했던 Google Gemini를 사용합니다.
 
 1. 먼저 콘솔 앱 프로젝트에 Google 커넥터 패키지 라이브러리를 추가합니다.
 
