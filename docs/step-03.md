@@ -787,6 +787,7 @@ Workshop
 1. `Workshop.ConsoleApp/Program.cs` 파일을 열고 `var kernel = builder.Build();` 라인을 찾아 아래 코드를 입력합니다.
 
     ```csharp
+        // 👇👇👇 아래 코드를 삭제하세요
         if (string.IsNullOrWhiteSpace(config["Azure:OpenAI:Endpoint"]!) == false)
         {
             var client = new AzureOpenAIClient(
@@ -799,7 +800,6 @@ Workshop
         }
         else
         {
-            // 👇👇👇 아래 코드를 삭제하세요
             var client = new OpenAIClient(
                 credential: new ApiKeyCredential(config["GitHub:Models:AccessToken"]!),
                 options: new OpenAIClientOptions { Endpoint = new Uri(config["GitHub:Models:Endpoint"]!) });
@@ -807,15 +807,17 @@ Workshop
             builder.AddOpenAIChatCompletion(
                         modelId: config["GitHub:Models:ModelId"]!,
                         openAIClient: client);
-            // 👆👆👆 위 코드를 삭제하세요
 
-            // 👇👇👇 아래 코드를 추가하세요
-            builder.AddGoogleAIGeminiChatCompletion(
-                        modelId: config["Google:Gemini:ModelName"]!,
-                        apiKey: config["Google:Gemini:ApiKey"]!,
-                        serviceId: "google");
-            // 👆👆👆 위 코드를 추가하세요
         }
+        // 👆👆👆 위 코드를 삭제하세요
+        
+        // 👇👇👇 아래 코드를 추가하세요
+        builder.AddGoogleAIGeminiChatCompletion(
+                    modelId: config["Google:Gemini:ModelName"]!,
+                    apiKey: config["Google:Gemini:ApiKey"]!,
+                    serviceId: "google");
+        // 👆👆👆 위 코드를 추가하세요
+
         var kernel = builder.Build();
     ```
 
