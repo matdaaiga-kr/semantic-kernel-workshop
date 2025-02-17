@@ -329,7 +329,7 @@ Semantic Kernel에 In-Memory 벡터 데이터베이스에 저장되어 있는 �
 1. `User:` 라는 프롬프트가 보이면 `What is Semantic Kernel?` 이라고 입력합니다.
 1. `Assistant: ` 프롬프트에 응답이 표시되는 것을 확인합니다. 그리고 앞서 벡터 스토어를 연결시키기 전에 실행시켰던 응답과 비교해 봅니다.
 1. 다시 `User: ` 프롬프트가 보이면 아무것도 입력하지 않고 엔터키를 눌러 콘솔 앱을 종료합니다.
-1. 프롬프트에 응답이 표시되지 않는 경우 GitHub Models의 토큰 사용 리밋이 걸렸을 수 있습니다.그럴 경우 [GitHub Models를 Google Gemini로 대체하기](#github-models를-google-gemini로-대체하기) 섹션을 참고하여 실습을 진행합니다.
+1. 프롬프트에 응답이 표시되지 않는 경우 GitHub Models의 토큰 사용 리밋이 걸렸을 수 있습니다.그럴 경우 [Troubleshooting : GitHub Models를 Google Gemini로 대체하기](#troubleshooting--github-models를-google-gemini로-대체하기) 섹션을 참고하여 Google Gemini로 바꾼 후 실습을 다시 진행해보세요.
 
 ## 벡터 스토어에 저장된 데이터를 채팅으로 검색하기
 
@@ -423,7 +423,7 @@ Semantic Kernel에 In-Memory 벡터 데이터베이스에 저장되어 있는 �
 1. `User:` 라는 프롬프트가 보이면 `What is Semantic Kernel?` 이라고 입력합니다.
 1. `Assistant: ` 프롬프트에 두 가지 형태로 응답이 표시되는 것을 확인합니다. 그리고 두 답변을 비교해 봅니다.
 1. 다시 `User: ` 프롬프트가 보이면 아무것도 입력하지 않고 엔터키를 눌러 콘솔 앱을 종료합니다.
-1. 프롬프트에 응답이 표시되지 않는 경우 GitHub Models의 토큰 사용 리밋이 걸렸을 수 있습니다.그럴 경우 [GitHub Models를 Google Gemini로 대체하기](#github-models를-google-gemini로-대체하기) 섹션을 참고하여 실습을 진행합니다.
+1. 프롬프트에 응답이 표시되지 않는 경우 GitHub Models의 토큰 사용 리밋이 걸렸을 수 있습니다.그럴 경우 [Troubleshooting : GitHub Models를 Google Gemini로 대체하기](#troubleshooting--github-models를-google-gemini로-대체하기) 섹션을 참고하여 Google Gemini로 바꾼 후 실습을 다시 진행해보세요.
 
 ## 벡터 스토어에 저장된 데이터를 자동 호출 기능을 추가한 채팅으로 검색하기
 
@@ -483,7 +483,7 @@ Semantic Kernel에 In-Memory 벡터 데이터베이스에 저장되어 있는 �
 1. `User:` 라는 프롬프트가 보이면 `What is Semantic Kernel?` 이라고 입력합니다.
 1. `Assistant: ` 프롬프트에 세 가지 형태로 응답이 표시되는 것을 확인합니다. 그리고 세 답변을 비교해 봅니다.
 1. 다시 `User: ` 프롬프트가 보이면 아무것도 입력하지 않고 엔터키를 눌러 콘솔 앱을 종료합니다.
-1. 프롬프트에 응답이 표시되지 않는 경우 GitHub Models의 토큰 사용 리밋이 걸렸을 수 있습니다.그럴 경우 [GitHub Models를 Google Gemini로 대체하기](#github-models를-google-gemini로-대체하기) 섹션을 참고하여 실습을 진행합니다.
+1. 프롬프트에 응답이 표시되지 않는 경우 GitHub Models의 토큰 사용 리밋이 걸렸을 수 있습니다.그럴 경우 [Troubleshooting : GitHub Models를 Google Gemini로 대체하기](#troubleshooting--github-models를-google-gemini로-대체하기) 섹션을 참고하여 Google Gemini로 바꾼 후 실습을 다시 진행해보세요.
 
 ## 채팅 결과를 모니터링하기
 
@@ -623,13 +623,19 @@ Semantic Kernel을 활용한 챗봇 호출 결과를 [.NET Aspire 대시보드](
    ![.NET Aspire 대시보드 - 데이터 트레이싱 결과 #1](./images/image-03.png)
 
    ![.NET Aspire 대시보드 - 데이터 트레이싱 결과 #4](./images/image-04.png)
-1. 프롬프트에 응답이 표시되지 않는 경우 GitHub Models의 토큰 사용 리밋이 걸렸을 수 있습니다.그럴 경우 [GitHub Models를 Google Gemini로 대체하기](#github-models를-google-gemini로-대체하기) 섹션을 참고하여 실습을 진행합니다.
+1. 프롬프트에 응답이 표시되지 않는 경우 GitHub Models의 토큰 사용 리밋이 걸렸을 수 있습니다.그럴 경우 [Troubleshooting : GitHub Models를 Google Gemini로 대체하기](#troubleshooting--github-models를-google-gemini로-대체하기) 섹션을 참고하여 Google Gemini로 바꾼 후 실습을 다시 진행해보세요.
 
-## GitHub Models를 Google Gemini로 대체하기
+## Troubleshooting : GitHub Models를 Google Gemini로 대체하기
 
-만약 GitHub Models의 토큰을 모두 사용했다면 질문에 대한 응답이 출력되지 않습니다. 이 경우, GitHub Models 대신 앞서 [STEP 01: Semantic Kernel 기본 작동법](./step-01.md) 기본 작동법에서 사용했던 Google Gemini를 사용합니다.
+만약 GitHub Models의 토큰을 모두 사용했다면 화면에 토큰 사용량 초과 관련 에러가 나타납니다. 이 경우, GitHub Models 대신 앞서 [STEP 01: Semantic Kernel 기본 작동법](./step-01.md)에서 사용했었던 Google Gemini를 사용합니다.
 
-1. 먼저 콘솔 앱 프로젝트에 Google 커넥터 패키지 라이브러리를 추가합니다.
+1. 먼저 워크샵 디렉토리에 있는지 다시 한 번 확인합니다. 
+
+    ```bash
+    cd $REPOSITORY_ROOT/workshop
+    ```
+
+1. 콘솔 앱 프로젝트에 Google 커넥터 패키지 라이브러리를 추가합니다.
 
     ```bash
     dotnet add ./Workshop.ConsoleApp package Microsoft.SemanticKernel.Connectors.Google --prerelease
