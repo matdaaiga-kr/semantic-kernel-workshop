@@ -185,7 +185,7 @@
 1. 터미널에서 아래 명령어를 실행시켜 이 리포지토리를 자신의 GitHub 계정으로 포크한 후 자신의 컴퓨터로 클론합니다.
 
     ```bash
-    gh repo fork devkimchi/semantic-kernel-workshop --clone
+    gh repo fork matdaaiga-kr/semantic-kernel-workshop --clone
     ```
 
 1. 터미널에서 아래 명령어를 실행시켜 클론한 디렉토리로 이동합니다.
@@ -206,13 +206,13 @@
     git remote -v
     ```
 
-   이 명령어를 실행하면 아래와 같은 결과가 나와야 합니다. 만약 `origin`에 `devkimchi`가 보이면 자신의 리포지토리에서 다시 클론해야 합니다.
+   이 명령어를 실행하면 아래와 같은 결과가 나와야 합니다. 만약 `origin`에 `matdaaiga-kr`가 보이면 자신의 리포지토리에서 다시 클론해야 합니다.
 
     ```bash
     origin  https://github.com/<자신의 GitHub ID>/semantic-kernel-workshop.git (fetch)
     origin  https://github.com/<자신의 GitHub ID>/semantic-kernel-workshop.git (push)
-    upstream        https://github.com/devkimchi/semantic-kernel-workshop.git (fetch)
-    upstream        https://github.com/devkimchi/semantic-kernel-workshop.git (push)
+    upstream        https://github.com/matdaaiga-kr/semantic-kernel-workshop.git (fetch)
+    upstream        https://github.com/matdaaiga-kr/semantic-kernel-workshop.git (push)
     ```
 
 1. Visual Studio Code의 터미널에서 아래 명령어를 실행시켜 [C# Dev Kit 익스텐션](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)을 설치했는지 확인합니다.
